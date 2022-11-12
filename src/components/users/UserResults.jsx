@@ -1,63 +1,38 @@
 import React from 'react'
 import {useEffect} from 'react'
+import {useState} from 'react'
 
-function UserResults() {
+function UserResults(){
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    fetchUsers()
+    
+  },[])
 
+  const fetchUsers = async () => {
+    const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
+      headers: {
+        Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+      }
+    })
 
+    const data = await response.json()
+    setUsers(data)
+    setLoading(false)
+  }
 
-    useEffect(() =>{
-        fetchUsers()
-    }, [])
-
-    const fetchUsers = async() => {
-
-        const GIT_HUB = process.env.REACT_APP_GITHUB_URL
-        const GIT_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
-
-
-        // const rep = await fetch(`${GIT_HUB}/users`, {
-        //     headers: {
-        //     Authorization : `token ${GIT_TOKEN}`
-        //     }
-        // })
-        // console.log(rep)
-        
-        // const data = await rep.json();
-        // console.log(data);
-
-        const rep = await fetch(`${GIT_HUB}/users`, {
-            headers: {
-            'Authorization' : `token ${GIT_TOKEN}`,
-            'Content-Type' : 'application/json'
-            }
-        })
-        console.log(rep)
-        
-        const data = await rep.json();
-        console.log(data);
-
-        // fetch(`${GIT_HUB}/user`, 
-        //             {headers: {
-        //             Authorization: `token ${GIT_TOKEN}`
-        //             }
-        //             })
-        // .then((response) => response.json())
-        // .then((data) => console.log(data))
-
-
-
-        // const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
-        //     headers: {
-        //         Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-        //     },
-        // })
-
-        // const data = await response.json()
-        // console.log(data);
-    }
-  return (
-    <div>UserResults</div>
-  )
+  if(!loading){
+    return ( 
+    <div className='grid grid-cols-1 gal-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2'>
+    {users.map((user) => (
+    <h3>{user.login}</h3>
+    ))}
+    </div>
+    )
+  } else {
+    return <h3>Loading...</h3>
+  }
 }
 
 export default UserResults
