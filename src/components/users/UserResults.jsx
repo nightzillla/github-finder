@@ -1,13 +1,9 @@
 import React from 'react'
 import {useEffect, useContext} from 'react'
-import {useState} from 'react'
 import Spinner from '../layout/Spinner'
 import UserItem from '../users/UserItem'
 import GithubContext from '../../context/github/GithubContext'
-import { createContext, useReducer } from "react";
-import githubReducer from '../../context/github/GithubReducer'
 
-// import GithubContext from '../../context/github/GithubContext'
 
 function UserResults(){
   const {users, loading, fetchUsers} = useContext(GithubContext)
