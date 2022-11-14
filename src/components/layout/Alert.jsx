@@ -1,7 +1,7 @@
 import React from 'react'
 import {useContext} from 'react'
 import AlertContext from '../../context/alert/AlertContext'
-import warning from '../../img/warning-sign.png'
+import warning from '../../img/warning-error.png'
 
 function Alert() {
     const {alert} = useContext(AlertContext)
@@ -12,6 +12,9 @@ function Alert() {
                 {alert.type === 'error' && (
                   <img src = {warning} />
                 )}
+                <p className="flex-1 text-base font-semibold leading-7 text-white">
+                    <strong>{alert.msg}</strong>
+                </p>
             </p>
         )
     )
