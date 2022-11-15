@@ -18,6 +18,6 @@ function Alert() {
             </p>
         )
     )
-}
+} // end of Alert
 
 export default Alert

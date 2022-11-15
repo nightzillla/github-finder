@@ -17,7 +17,7 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
     const {items} = await response.json()
 
    return items
-}
+} // end of searchUsers
 
  // Get single user
  export const getUser = async (login) => {
@@ -33,7 +33,8 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN
       const data = await response.json()
       return data 
   } 
-}
+}// end of getUser
+
 // Get user repos
 export const getUserRepos = async (login) => {
   const params = new URLSearchParams({
@@ -49,4 +50,4 @@ export const getUserRepos = async (login) => {
   
   const data = await response.json()
   return data
-}
+} // end of getUsersRepos

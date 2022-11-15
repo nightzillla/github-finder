@@ -20,7 +20,7 @@ function UserItem({ user: { login, avatar_url }}){
             </div>
         </div>
     )
-}
+} // end of UserItem
 
 UserItem.propTypes = {
     user: PropTypes.object.isRequired,

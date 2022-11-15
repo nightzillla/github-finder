@@ -20,6 +20,6 @@ function UserResults(){
   } else {
     return <Spinner/>
   }
-}
+} // end of UserResults 
 
 export default UserResults

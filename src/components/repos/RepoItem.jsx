@@ -34,7 +34,7 @@ function RepoItem({repo}) {
             </div>
         </div>
     )
-}
+} // end of RepoItem
 
 RepoItem.propType = {
     repo: PropTypes.object.isRequired

@@ -24,5 +24,5 @@ export const GithubProvider = ({children}) => {
         {children}
       </GithubContext.Provider>
     
-}
+} // end of GithubProvider
 export default GithubContext

@@ -15,7 +15,7 @@ function RepoList({repos}) {
         </div>
     </div>
   )
-}
+} // end of RepoList
 
 RepoList.propTypes = {
     repos: PropTypes.array.isRequired,

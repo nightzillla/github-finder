@@ -11,6 +11,9 @@ import {getUser, getUserRepos} from '../context/github/GithubActions'
 function User() {
     const {user, loading, repos, dispatch} = useContext(GithubContext)
 
+    const { name,type, avatar_url, location, bio, blog, twitter_username, login,
+      html_url, followers, following, public_repos, public_gists, hireable,
+          } = user;
     const params = useParams();
 
     useEffect(() => {
@@ -25,10 +28,7 @@ function User() {
       getUserData()
     }, [dispatch, params.login])
 
-    const { name,type, avatar_url, location, bio, blog, twitter_username, login,
-      html_url, followers, following, public_repos, public_gists, hireable,
-          } = user;
-
+    
     if(loading) {
       return <Spinner/>
     }
@@ -104,7 +104,7 @@ function User() {
                   <a href={`https://twitter.com/${twitter_username}`} target='_blank' rel='noreferrer'>{twitter_username}</a>
                 </div>
               </div>
-            )}
+              )}
           </div>
         </div>
       </div>
@@ -158,6 +158,6 @@ function User() {
     </div>
     </>
   )
-}
+} // end of Users 
 
 export default User

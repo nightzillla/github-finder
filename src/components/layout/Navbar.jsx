@@ -26,7 +26,7 @@ function Navbar({title}) {
         </div>
     </nav>
   )
-}
+} // end of Navbar
 
 Navbar.defaultProps = {
     title: 'Github Finder'

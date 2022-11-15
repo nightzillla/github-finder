@@ -48,6 +48,6 @@ function UserSearch() {
             )}        
         </div>
     )
-}
+} // end of UserSearch
 
 export default UserSearch
