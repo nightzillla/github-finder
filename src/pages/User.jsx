@@ -1,4 +1,4 @@
-import {FaCodepen, FaStore, FaUserFriends, FaUsers} from 'react-icons/fa'
+import {FaCodepen, FaStore, FaUsers} from 'react-icons/fa'
 import React from 'react'
 import {useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom'
@@ -6,33 +6,28 @@ import Spinner from '../components/layout/Spinner'
 import RepoList from '../components/repos/RepoList'
 import {useParams} from 'react-router-dom'
 import GithubContext from '../context/github/GithubContext'
+import {getUser, getUserRepos} from '../context/github/GithubActions'
 
 function User() {
-    const { getUser, user, loading, getUserRepos, repos} = useContext(GithubContext)
+    const {user, loading, repos, dispatch} = useContext(GithubContext)
 
     const params = useParams();
 
     useEffect(() => {
-        getUser(params.login)
-        getUserRepos(params.login)
-    }, [])
+      dispatch({type: 'SET_LOADING'})
+      const getUserData = async() => {
+        const userData = await getUser(params.login)
+        dispatch({type: 'GET_USER', payload: userData})
 
-    const {
-      name,
-      type,
-      avatar_url,
-      location,
-      bio,
-      blog,
-      twitter_username,
-      login,
-      html_url,
-      followers,
-      following,
-      public_repos,
-      public_gists,
-      hireable,
-    } = user;
+        const userRepoData = await getUserRepos(params.login)
+        dispatch({type: 'GET_REPOS', payload: userRepoData})
+      }
+      getUserData()
+    }, [dispatch, params.login])
+
+    const { name,type, avatar_url, location, bio, blog, twitter_username, login,
+      html_url, followers, following, public_repos, public_gists, hireable,
+          } = user;
 
     if(loading) {
       return <Spinner/>
@@ -147,7 +142,7 @@ function User() {
             {public_repos}
           </div>
         </div>{/* END OF PUBLIC REPOS */}
-        <div className='stat'>
+        <div className='public-gists stat'>
           <div className="stat-figure text-secondary">
             <FaStore className='text-3xl md:text-5xl'/>
           </div>
