@@ -7,13 +7,13 @@ function NotFound() {
     <div className='hero'>
         <div className="text-center hero">
             <div className="max-w-lg">
-                <h1 className="text-8xl font-bold mb-8">
+                {/* <h1 className="text-8xl font-bold mb-8">
                     Oops!
-                </h1>
-                <p className="text-5xl mb-8">404 - Page not found, please try again!</p>
+                </h1> */}
+                <p className="text-5xl mb-8">Welcome to Github Finder please click the button to find your profile!</p>
                 <Link to='/' className='btn btn-primary btn-lg'>
                     <FaHome className='mr-2'/>
-                    Back To Home
+                    Click Me!
                 </Link>
             </div>
         </div>
