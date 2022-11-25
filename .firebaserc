@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "nightzillla-ea2f4"
-  }
+    "default": "github-finder-29022",
+    "github": "github-finder-29022"
+  },
+  "targets": {},
+  "etags": {}
 }
