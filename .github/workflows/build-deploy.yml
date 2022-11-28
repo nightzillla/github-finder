@@ -17,8 +17,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-      env: 
-      REACT_APP_GITHUB_TOKEN : ${{ secrets.REACT_APP_GITHUB_TOKEN }}
+    - name: Build
+      run: |
+        npm install
+        npm run-script build  
+      env:  
+        REACT_APP_GITHUB_TOKEN : ${{ secrets.REACT_APP_GITHUB_TOKEN }}
 
 
     - name: Install Node.js
