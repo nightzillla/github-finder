@@ -10,7 +10,7 @@ function NotFound() {
                 {/* <h1 className="text-8xl font-bold mb-8">
                     Oops!
                 </h1> */}
-                <p className="text-5xl mb-8">Welcome to Github Finder please click the button to find your profile!</p>
+                <p className="text-5xl mb-8">Welcome to Github Finder please click the button to find your profile! checking to see if github pages works! </p>
                 <Link to='/' className='btn btn-primary btn-lg'>
                     <FaHome className='mr-2'/>
                     Click Me!
